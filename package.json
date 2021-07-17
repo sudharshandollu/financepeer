@@ -38,7 +38,7 @@
     "format": "prettier --write \"./src\"",
     "run-all": "npm-run-all --parallel test lint:fix"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://financepeer.herokuapp.com",
   "lint-staged": {
     "*.js": [
       "npm run lint:fix"

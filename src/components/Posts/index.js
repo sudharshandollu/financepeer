@@ -16,7 +16,7 @@ class Products extends Component {
 
   getJsonData = async () => {
     const username = Cookies.get('username')
-    const api = `http://localhost:5000/post/?username=${username}`
+    const api = `https://financepeer.herokuapp.com/post/?username=${username}`
     const options = {
       method: 'GET',
     }

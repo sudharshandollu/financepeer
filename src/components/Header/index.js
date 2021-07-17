@@ -10,7 +10,7 @@ const Header = props => {
     const username = Cookies.get('username')
     const userData = {username, data}
 
-    const api = 'http://localhost:5000/posts'
+    const api = 'https://financepeer.herokuapp.com/posts'
     const options = {
       headers: {'Content-Type': 'application/json'},
       method: 'POST',
