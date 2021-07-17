@@ -1,7 +1,6 @@
-import {React, Component} from 'react'
+import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect, Link, withRouter} from 'react-router-dom'
-import ReactFileReader from 'react-file-reader'
+import {Redirect, withRouter} from 'react-router-dom'
 
 import Header from '../Header'
 import './index.css'
@@ -9,7 +8,7 @@ import './index.css'
 class Home extends Component {
   handleChangeFile = file => {
     const fileData = new FileReader()
-    fileData.onloadend = function (e) {
+    fileData.onloadend = async function (e) {
       const content = e.target.result
       try {
         let data = JSON.parse(content)
@@ -24,9 +23,11 @@ class Home extends Component {
           method: 'POST',
           body: JSON.stringify(userData),
         }
-        fetch(api, options)
+        await fetch(api, options)
       } catch (error) {
-        console.log('error')
+        alert('Invalid Input File')
+
+        // console.log(error)
       }
 
       // Use reader.result
@@ -37,6 +38,7 @@ class Home extends Component {
 
   render() {
     const jwtToken = Cookies.get('jwt_token')
+
     if (jwtToken === undefined) {
       return <Redirect to="/login" />
     }
